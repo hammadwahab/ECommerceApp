@@ -11,23 +11,28 @@ const ShoppingCartItem: React.FC<ShoppingCartItemProps> = ({item}) => {
 
 	return (
 		<View style={styles.container}>
-			<Text style={styles.name}>{item.name}</Text>
-			<Text style={styles.price}>${item.price}</Text>
-			<View style={styles.quantityContainer}>
-				<TouchableOpacity
-					style={styles.quantityButton}
-					onPress={() => {
-						if (item.quantity > 1) removeFromCart(item.id);
-					}}>
-					<Text style={styles.quantityButtonText}>-</Text>
-				</TouchableOpacity>
-				<Text style={styles.quantityText}>{item.quantity}</Text>
-				<TouchableOpacity
-					style={styles.quantityButton}
-					onPress={() => addToCart(item)} // Increment quantity
-				>
-					<Text style={styles.quantityButtonText}>+</Text>
-				</TouchableOpacity>
+			<View style={styles.subContainer}>
+				<View style={styles.dataContainer}>
+					<Text style={styles.name}>{item.name}</Text>
+					<Text style={styles.price}>${item.price}</Text>
+				</View>
+				<View style={styles.quantityContainer}>
+					<View style={styles.quantitySubContainer}>
+						<TouchableOpacity
+							style={styles.quantityButton}
+							onPress={() => {
+								if (item.quantity > 1) removeFromCart(item.id);
+							}}>
+							<Text style={styles.quantityButtonText}>-</Text>
+						</TouchableOpacity>
+						<Text style={styles.quantityText}>{item.quantity}</Text>
+						<TouchableOpacity
+							style={styles.quantityButton}
+							onPress={() => addToCart(item)}>
+							<Text style={styles.quantityButtonText}>+</Text>
+						</TouchableOpacity>
+					</View>
+				</View>
 			</View>
 			<TouchableOpacity
 				style={styles.removeButton}
@@ -42,8 +47,12 @@ const styles = StyleSheet.create({
 	container: {
 		borderWidth: 1,
 		borderColor: '#ccc',
+		borderRadius: 10,
 		padding: 10,
 		marginBottom: 10,
+	},
+	subContainer: {
+		flexDirection: 'row',
 	},
 	name: {
 		fontSize: 16,
@@ -68,7 +77,14 @@ const styles = StyleSheet.create({
 		color: 'white',
 		fontWeight: 'bold',
 	},
+	dataContainer: {
+		flex: 3,
+	},
 	quantityContainer: {
+		flex: 1,
+		justifyContent: 'center',
+	},
+	quantitySubContainer: {
 		flexDirection: 'row',
 		alignItems: 'center',
 	},
