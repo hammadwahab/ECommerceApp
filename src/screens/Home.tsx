@@ -7,7 +7,7 @@ import {Product, useGlobalState} from '../context/GlobalState';
 import ProductListItem from '../components/ProductListItem';
 import {fetchProducts} from '../services/api';
 
-const HomeScreen: React.FC = () => {
+const Home: React.FC = () => {
 	const {products, setProducts, addToCart} = useGlobalState();
 	const [loading, setLoading] = useState(true);
 
@@ -73,4 +73,4 @@ const styles = StyleSheet.create({
 	},
 });
 
-export default HomeScreen;
+export default Home;

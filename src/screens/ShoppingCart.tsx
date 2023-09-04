@@ -4,7 +4,7 @@ import {View, FlatList, Text, StyleSheet} from 'react-native';
 import {Product, useGlobalState} from '../context/GlobalState';
 import ShoppingCartItem from '../components/ShoppingCartItem';
 
-const ShoppingCartScreen: React.FC = () => {
+const ShoppingCart: React.FC = () => {
 	const {cart} = useGlobalState();
 
 	const renderItem = ({item}: {item: Product}) => (
@@ -33,4 +33,4 @@ const styles = StyleSheet.create({
 	},
 });
 
-export default ShoppingCartScreen;
+export default ShoppingCart;
